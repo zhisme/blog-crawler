@@ -30,8 +30,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet data/comments.csv; then
-            git add data/comments.csv
+          git add data/comments.csv
+          if ! git diff --cached --quiet; then
             git commit -m "update comment counts $(date -u +%F)"
             git push
           else
